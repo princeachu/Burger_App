@@ -1,0 +1,63 @@
+{{!-- Intro section --}}
+<div id="introImg">
+    <div id="text-imgHolder">
+        {{!-- App Name --}}
+        <div id="introText">
+            <p>EAT</p>
+            <p>THE</p>
+            <p>BURGER!</p>
+        </div>
+        {{!-- Burger Icon --}}
+        <img id="introBurger" src="https://i.imgur.com/qaslKyn.png">
+    </div>
+</div>
+
+{{!-- Mobile Burger Icon --}}
+<div id="mobileBurgerHolder">
+    <img id="mobileBurger" src="https://i.imgur.com/qaslKyn.png">
+</div>
+
+{{!-- Input Area --}}
+<div id="inputForm">
+    {{!-- Welcome Text --}}
+    <p id="welcome">Welcome to your Burger Log!</p>
+
+    {{!-- Form Input --}}
+    <p>Enter a burger you want to eat and hit Add Burger!</p>
+    <form class="create-form">
+        <div class="form-group">
+            <textarea rows="6" type="text" id="bu" name="name"></textarea>
+        </div>
+        <button class="btn btn-dark" type="submit">Add Burger</button>
+    </form>
+</div>
+
+<hr>
+
+{{!-- Burger Log --}}
+<div class="container" id="burgerLog">
+    <div class="row">
+        {{!-- Burgers to eat --}}
+        <div class="col">
+            <p class="burgersHeader">To Eat</p>
+            <ul id="burgersAdded">
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{> burgers/burger-block devoured=true}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        {{!-- Devoured burgers --}}
+        <div class="col">
+            <p class="burgersHeader">Devoured</p>
+            <ul id="burgersDevoured" class="alert alert-secondary">
+                {{#each burgers}}
+                {{#if devoured}}
+                {{> burgers/burger-block devoured=false}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
